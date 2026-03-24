@@ -1,0 +1,711 @@
+<html lang="pt-br" class="scroll-smooth" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <script>
+    // Inline script to prevent theme flash
+    (function () {
+      const savedTheme = localStorage.getItem('theme');
+      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leonardo Guimarães | Desenvolvedor de Automação com IA e Agentes de Voz</title>
+  <meta name="description"
+    content="Eu projeto sistemas de IA que substituem vendas manuais, suporte e acompanhamento de leads. Especialista em fluxos n8n, Vapi e LLMs." />
+  <link rel="icon" type="image/webp" href="images/Favicon%20branco.webp" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet" />
+  <script src="js/iconify-icon.min.js"></script>
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Metatags para Compartilhamento (WhatsApp, Facebook, LinkedIn, etc.) -->
+  <meta property="og:title" content="Leonardo Guimarães | Desenvolvedor de Automação com IA e Agentes de Voz" />
+  <meta property="og:description"
+    content="Eu projeto sistemas de IA que substituem vendas manuais, suporte e acompanhamento de leads. Especialista em fluxos n8n, Vapi e LLMs." />
+  <meta property="og:image" content="https://projetos.nextautomatik.com/automacao/images/Favicon-WhatsApp.webp" />
+  <meta property="og:url" content="https://projetos.nextautomatik.com/automacao/" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Leonardo Guimarães | Desenvolvedor de Automação com IA" />
+  <meta name="twitter:description" content="Especialista em fluxos n8n, Vapi e implementação de Agentes de Voz." />
+  <meta name="twitter:image" content="https://projetos.nextautomatik.com/automacao/images/Favicon-WhatsApp.webp" />
+
+  <script src="js/main.js" defer></script>
+</head>
+
+<body class="antialiased selection:bg-blue-500/30 selection:text-white relative">
+  <!-- FLUID CURSOR BACKGROUND -->
+  <canvas id="fluid" class="fixed top-0 left-0 w-full h-full pointer-events-none -z-10 opacity-60" width="1056"
+    height="734"></canvas>
+
+  <!-- HEADER -->
+  <header class="fixed top-0 w-full z-50 border-b border-border bg-bg-primary/50 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <!-- Purple logo for Light Mode -->
+        <img src="images/Ícone do logo no roxo.webp" alt="Logo"
+          class="h-6 w-auto object-contain transition-all block dark:hidden" />
+        <!-- White logo for Dark Mode -->
+        <img src="images/Ícone do logo no branco.webp" alt="Logo"
+          class="h-6 w-auto object-contain transition-all hidden dark:block" />
+        <span class="font-semibold tracking-tight text-sm text-text-primary">LEONARDO GUIMARÃES</span>
+      </div>
+
+      <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-text-secondary">
+        <a href="#services" class="hover:text-brand-primary transition-colors">Serviços</a>
+        <a href="#process" class="hover:text-brand-primary transition-colors">Processo</a>
+        <a href="#use-cases" class="hover:text-brand-primary transition-colors">Casos de Uso</a>
+        <a href="#about" class="hover:text-brand-primary transition-colors">Sobre</a>
+      </nav>
+
+      <!-- Theme Toggle & Contact -->
+      <div class="flex items-center gap-4">
+        <button id="theme-toggle"
+          class="p-2 rounded-full border border-border hover:bg-border transition-colors text-text-secondary hover:text-text-primary"
+          aria-label="Alternar tema">
+          <!-- Sun icon (shown in light mode) -->
+          <svg class="sun block dark:hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+          </svg>
+          <!-- Moon icon (shown in dark mode) -->
+          <svg class="moon hidden dark:block" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
+        </button>
+
+        <a href="#contact"
+          class="hidden lg:block text-sm font-medium text-text-primary hover:text-brand-primary transition-colors px-4 py-2 border border-border rounded-full">
+          Agendar Consultoria →
+        </a>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="lg:hidden text-text-secondary hover:text-text-primary transition-colors" onclick="
+              document.getElementById('mobile-menu').classList.toggle('hidden')
+            ">
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em"
+            viewBox="0 0 24 24" data-icon="lucide:menu">
+            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 5h16M4 12h16M4 19h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu"
+      class="hidden absolute top-16 left-0 w-full bg-bg-primary border-b border-border p-4 flex flex-col gap-4 lg:hidden shadow-lg">
+      <a href="#services" class="text-text-secondary hover:text-brand-primary transition-colors">Serviços</a>
+      <a href="#process" class="text-text-secondary hover:text-brand-primary transition-colors">Processo</a>
+      <a href="#use-cases" class="text-text-secondary hover:text-brand-primary transition-colors">Casos de Uso</a>
+      <a href="#contact" class="text-brand-primary font-medium hover:text-brand-secondary transition-colors">Agendar Estratégia</a>
+    </div>
+  </header>
+
+  <main class="">
+    <!-- HERO SECTION -->
+    <section class="relative pt-40 pb-20 md:pt-48 md:pb-32 px-6">
+      <div class="max-w-4xl mx-auto text-center space-y-8">
+        <div
+          class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#8B5CF6] dark:border-brand-primary/30 bg-brand-primary/10 text-[#8B5CF6] dark:text-[#F8F8FF] text-xs font-medium tracking-wide">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-primary/75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-primary"></span>
+          </span>
+          ACEITANDO NOVOS CLIENTES - 4º TRIMESTRE
+        </div>
+
+        <h1 class="text-4xl md:text-6xl font-bold tracking-tight mb-6 text-text-primary leading-[1.2]">
+          Soluções de
+          <span
+            class="bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">Inteligência e
+            Automação</span>
+          que <span class="text-text-secondary">Ligam, Atendem e Vendem.</span>
+        </h1>
+
+        <p class="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed">
+          Pare de perder leads por demora no atendimento. Eu projeto agentes
+          de voz com IA e fluxos de automação que substituem o acompanhamento
+          manual e escalam sua operação instantaneamente.
+        </p>
+
+        <div class="flex flex-col md:flex-row items-center justify-center gap-4 pt-4">
+          <button class="shiny-cta group" onclick="window.location.href = '#contact'">
+            <span class="flex items-center gap-2">
+              Agendar Chamada de Estratégia Grátis
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em"
+                viewBox="0 0 24 24" data-icon="lucide:arrow-right">
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M5 12h14m-7-7l7 7l-7 7"></path>
+              </svg>
+            </span>
+          </button>
+
+          <button class="secondary-cta hover:bg-black/5" onclick="window.location.href='#use-cases'">
+            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em"
+              viewBox="0 0 24 24" data-icon="lucide:play-circle">
+              <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                <path d="M9 9.003a1 1 0 0 1 1.517-.859l4.997 2.997a1 1 0 0 1 0 1.718l-4.997 2.997A1 1 0 0 1 9 14.996z">
+                </path>
+                <circle cx="12" cy="12" r="10"></circle>
+              </g>
+            </svg>
+            Ver Casos de Uso Reais
+          </button>
+        </div>
+
+        <!-- Credibility Metrics -->
+        <div class="pt-12 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-white/5 mt-12 max-w-3xl mx-auto">
+          <div class="text-center">
+            <p class="text-2xl font-bold text-[#8B5CF6] dark:text-white">100k+</p>
+            <p class="text-xs text-[#0F0714] dark:text-neutral-500 uppercase tracking-wide mt-1">
+              Chamadas via IA
+            </p>
+          </div>
+          <div class="text-center">
+            <p class="text-2xl font-bold text-[#8B5CF6] dark:text-white">24/7</p>
+            <p class="text-xs text-[#0F0714] dark:text-neutral-500 uppercase tracking-wide mt-1">
+              Disponibilidade
+            </p>
+          </div>
+          <div class="text-center">
+            <p class="text-2xl font-bold text-[#8B5CF6] dark:text-white">30%</p>
+            <p class="text-xs text-[#0F0714] dark:text-neutral-500 uppercase tracking-wide mt-1">
+              Aumento em Conv.
+            </p>
+          </div>
+          <div class="text-center">
+            <p class="text-2xl font-bold text-[#8B5CF6] dark:text-white">40+</p>
+            <p class="text-xs text-[#0F0714] dark:text-neutral-500 uppercase tracking-wide mt-1">
+              Sistemas Criados
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOCIAL PROOF / TECH STACK -->
+    <section class="py-12 border-y border-white/5 bg-[#0F0714] dark:bg-black/40">
+      <div class="max-w-7xl mx-auto px-6 text-center">
+        <p class="text-sm text-[#8B5CF6] dark:text-neutral-500 font-medium mb-8">
+          IMPULSIONANDO A AUTOMAÇÃO COM IA PARA:
+        </p>
+        <div
+          class="flex flex-wrap justify-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+          <!-- Tech Logos (Iconify + Text) -->
+          <div class="flex items-center gap-2 text-xl font-semibold text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em"
+              viewBox="0 0 24 24" data-icon="simple-icons:n8n">
+              <path fill="currentColor"
+                d="M21.474 5.684a2.53 2.53 0 0 0-2.447 1.895H16.13a2.526 2.526 0 0 0-2.492 2.11l-.103.624a1.26 1.26 0 0 1-1.246 1.055h-1.001a2.527 2.527 0 0 0-4.893 0H4.973a2.527 2.527 0 1 0 0 1.264h1.422a2.527 2.527 0 0 0 4.894 0h1a1.26 1.26 0 0 1 1.247 1.055l.103.623a2.526 2.526 0 0 0 2.492 2.111h.37a2.527 2.527 0 1 0 0-1.263h-.37a1.26 1.26 0 0 1-1.246-1.056l-.103-.623A2.52 2.52 0 0 0 13.96 12a2.52 2.52 0 0 0 .82-1.48l.104-.622a1.26 1.26 0 0 1 1.246-1.056h2.896a2.527 2.527 0 1 0 2.447-3.158m0 1.263a1.263 1.263 0 0 1 1.263 1.263a1.263 1.263 0 0 1-1.263 1.264A1.263 1.263 0 0 1 20.21 8.21a1.263 1.263 0 0 1 1.264-1.263m-18.948 3.79A1.263 1.263 0 0 1 3.79 12a1.263 1.263 0 0 1-1.264 1.263A1.263 1.263 0 0 1 1.263 12a1.263 1.263 0 0 1 1.263-1.263m6.316 0A1.263 1.263 0 0 1 10.105 12a1.263 1.263 0 0 1-1.263 1.263A1.263 1.263 0 0 1 7.58 12a1.263 1.263 0 0 1 1.263-1.263m10.106 3.79a1.263 1.263 0 0 1 1.263 1.263a1.263 1.263 0 0 1-1.263 1.263a1.263 1.263 0 0 1-1.264-1.263a1.263 1.263 0 0 1 1.263-1.264">
+              </path>
+            </svg>
+            n8n
+          </div>
+          <div class="flex items-center gap-2 text-xl font-semibold text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em"
+              viewBox="0 0 24 24" data-icon="simple-icons:openai">
+              <path fill="currentColor"
+                d="M22.282 9.821a6 6 0 0 0-.516-4.91a6.05 6.05 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a6 6 0 0 0-3.998 2.9a6.05 6.05 0 0 0 .743 7.097a5.98 5.98 0 0 0 .51 4.911a6.05 6.05 0 0 0 6.515 2.9A6 6 0 0 0 13.26 24a6.06 6.06 0 0 0 5.772-4.206a6 6 0 0 0 3.997-2.9a6.06 6.06 0 0 0-.747-7.073M13.26 22.43a4.48 4.48 0 0 1-2.876-1.04l.141-.081l4.779-2.758a.8.8 0 0 0 .392-.681v-6.737l2.02 1.168a.07.07 0 0 1 .038.052v5.583a4.504 4.504 0 0 1-4.494 4.494M3.6 18.304a4.47 4.47 0 0 1-.535-3.014l.142.085l4.783 2.759a.77.77 0 0 0 .78 0l5.843-3.369v2.332a.08.08 0 0 1-.033.062L9.74 19.95a4.5 4.5 0 0 1-6.14-1.646M2.34 7.896a4.5 4.5 0 0 1 2.366-1.973V11.6a.77.77 0 0 0 .388.677l5.815 3.354l-2.02 1.168a.08.08 0 0 1-.071 0l-4.83-2.786A4.504 4.504 0 0 1 2.34 7.872zm16.597 3.855l-5.833-3.387L15.119 7.2a.08.08 0 0 1 .071 0l4.83 2.791a4.494 4.494 0 0 1-.676 8.105v-5.678a.79.79 0 0 0-.407-.667m2.01-3.023l-.141-.085l-4.774-2.782a.78.78 0 0 0-.785 0L9.409 9.23V6.897a.07.07 0 0 1 .028-.061l4.83-2.787a4.5 4.5 0 0 1 6.68 4.66zm-12.64 4.135l-2.02-1.164a.08.08 0 0 1-.038-.057V6.075a4.5 4.5 0 0 1 7.375-3.453l-.142.08L8.704 5.46a.8.8 0 0 0-.393.681zm1.097-2.365l2.602-1.5l2.607 1.5v2.999l-2.597 1.5l-2.607-1.5Z">
+              </path>
+            </svg>
+            OpenAI
+          </div>
+          <div class="flex items-center gap-2 text-xl font-semibold text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em"
+              viewBox="0 0 24 24" data-icon="simple-icons:twilio">
+              <path fill="currentColor"
+                d="M12 0C5.381-.008.008 5.352 0 11.971V12c0 6.64 5.359 12 12 12c6.64 0 12-5.36 12-12c0-6.641-5.36-12-12-12m0 20.801c-4.846.015-8.786-3.904-8.801-8.75V12a8.777 8.777 0 0 1 8.75-8.801H12a8.776 8.776 0 0 1 8.801 8.75V12c.015 4.847-3.904 8.786-8.75 8.801zm5.44-11.76a2.49 2.49 0 0 1-2.481 2.479a2.49 2.49 0 0 1-2.479-2.479a2.49 2.49 0 0 1 2.479-2.481a2.493 2.493 0 0 1 2.481 2.481m0 5.919c0 1.36-1.12 2.48-2.481 2.48a2.49 2.49 0 0 1-2.479-2.48a2.49 2.49 0 0 1 2.479-2.479a2.49 2.49 0 0 1 2.481 2.479m-5.919 0c0 1.36-1.12 2.48-2.479 2.48a2.49 2.49 0 0 1-2.481-2.48a2.49 2.49 0 0 1 2.481-2.479a2.49 2.49 0 0 1 2.479 2.479m0-5.919a2.49 2.49 0 0 1-2.479 2.479a2.49 2.49 0 0 1-2.481-2.479A2.493 2.493 0 0 1 9.042 6.56a2.493 2.493 0 0 1 2.479 2.481">
+              </path>
+            </svg>
+            Twilio
+          </div>
+          <div class="flex items-center gap-2 text-xl font-semibold text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em"
+              viewBox="0 0 24 24" data-icon="lucide:phone">
+              <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233a14 14 0 0 0 6.392 6.384">
+              </path>
+            </svg>
+            Vapi
+          </div>
+          <div class="flex items-center gap-2 text-xl font-semibold text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em"
+              viewBox="0 0 24 24" data-icon="simple-icons:airtable">
+              <path fill="currentColor"
+                d="M11.992 1.966c-.434 0-.87.086-1.28.257L1.779 5.917c-.503.208-.49.908.012 1.116l8.982 3.558a3.27 3.27 0 0 0 2.454 0l8.982-3.558c.503-.196.503-.908.012-1.116l-8.957-3.694a3.3 3.3 0 0 0-1.272-.257M23.4 8.056a.6.6 0 0 0-.222.045l-10.012 3.877a.61.61 0 0 0-.38.564v8.896a.6.6 0 0 0 .821.552L23.62 18.1a.58.58 0 0 0 .38-.551V8.653a.6.6 0 0 0-.6-.596zM.676 8.095a.64.64 0 0 0-.48.19C.086 8.396 0 8.53 0 8.69v8.355c0 .442.515.737.908.54l6.27-3.006l.307-.147l2.969-1.436c.466-.22.43-.908-.061-1.092L.883 8.138a.6.6 0 0 0-.207-.044z">
+              </path>
+            </svg>
+            Airtable
+          </div>
+          <div class="flex items-center gap-2 text-xl font-semibold text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em"
+              viewBox="0 0 24 24" data-icon="simple-icons:googlecloud">
+              <path fill="currentColor"
+                d="M12.19 2.38a9.344 9.344 0 0 0-9.234 6.893c.053-.02-.055.013 0 0c-3.875 2.551-3.922 8.11-.247 10.941l.006-.007l-.007.03a6.7 6.7 0 0 0 4.077 1.356h5.173l.03.03h5.192c6.687.053 9.376-8.605 3.835-12.35a9.37 9.37 0 0 0-2.821-4.552l-.043.043l.006-.05A9.34 9.34 0 0 0 12.19 2.38m-.358 4.146c1.244-.04 2.518.368 3.486 1.15a5.19 5.19 0 0 1 1.862 4.078v.518c3.53-.07 3.53 5.262 0 5.193h-5.193l-.008.009v-.04H6.785a2.6 2.6 0 0 1-1.067-.23h.001a2.597 2.597 0 1 1 3.437-3.437l3.013-3.012A6.75 6.75 0 0 0 8.11 8.24c.018-.01.04-.026.054-.023a5.2 5.2 0 0 1 3.67-1.69z">
+              </path>
+            </svg>
+            Google
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="py-24 px-6 max-w-7xl mx-auto">
+      <div class="mb-16 text-center">
+        <h2 class="text-3xl md:text-4xl font-semibold tracking-tight mb-4 text-text-primary">
+          Minhas <span
+            class="bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">Soluções</span>
+          de IA
+        </h2>
+        <p class="text-text-secondary max-w-2xl mx-auto">
+          Projetos personalizados de ponta a ponta para escalar sua operação com
+          inteligência artificial de verdade.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Card 1 -->
+        <div class="glass-card service-card p-8 rounded-xl text-center md:text-left transition-all">
+          <div class="service-card__icon mb-6 group-hover:scale-110 transition-transform mx-auto md:mx-0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-mic-icon lucide-mic">
+              <path d="M12 19v3" />
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+              <rect x="9" y="2" width="6" height="13" rx="3" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-medium mb-3">Agentes de Voz com IA</h3>
+          <p class="text-text-secondary text-sm leading-relaxed mb-4">
+            Agentes (Inbound e Outbound) com entonação humana. Eles qualificam
+            leads, agendam reuniões e realizam suporte ao cliente 24/7.
+          </p>
+          <ul class="text-text-secondary text-xs space-y-2 flex flex-col items-center md:items-start">
+            <li class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em"
+                viewBox="0 0 24 24" data-icon="lucide:check">
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M20 6L9 17l-5-5"></path>
+              </svg>
+              Latência abaixo de 1s
+            </li>
+            <li class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em"
+                viewBox="0 0 24 24" data-icon="lucide:check">
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M20 6L9 17l-5-5"></path>
+              </svg>
+              Base de conhecimento personalizada
+            </li>
+          </ul>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="glass-card service-card p-8 rounded-xl text-center md:text-left transition-all">
+          <div class="service-card__icon mb-6 group-hover:scale-110 transition-transform mx-auto md:mx-0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-bot-icon lucide-bot">
+              <path d="M12 8V4H8" />
+              <rect width="16" height="12" x="4" y="8" rx="2" />
+              <path d="M2 14h2" />
+              <path d="M20 14h2" />
+              <path d="M15 13v2" />
+              <path d="M9 13v2" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-medium mb-3">Automação de WhatsApp</h3>
+          <p class="text-text-secondary text-sm leading-relaxed mb-4">
+            Integração direta com a API Oficial do WhatsApp. Resposta
+            imediata, nutrição de leads e sincronização total com o seu CRM.
+          </p>
+          <ul class="text-text-secondary text-xs space-y-2 flex flex-col items-center md:items-start">
+            <li class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em"
+                viewBox="0 0 24 24" data-icon="lucide:check">
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M20 6L9 17l-5-5"></path>
+              </svg>
+              Atendimento instantâneo
+            </li>
+            <li class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em"
+                viewBox="0 0 24 24" data-icon="lucide:check">
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M20 6L9 17l-5-5"></path>
+              </svg>
+              Fluxos complexos de nutrição
+            </li>
+          </ul>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="glass-card service-card p-8 rounded-xl text-center md:text-left transition-all">
+          <div class="service-card__icon mb-6 group-hover:scale-110 transition-transform mx-auto md:mx-0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-workflow-icon lucide-workflow">
+              <rect width="8" height="8" x="3" y="3" rx="2" />
+              <path d="M7 11v4a2 2 0 0 0 2 2h4" />
+              <rect width="8" height="8" x="13" y="13" rx="2" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-medium mb-3">Fluxos de CRM &amp; n8n</h3>
+          <p class="text-text-secondary text-sm leading-relaxed mb-4">
+            O motor que une tudo. Desenvolvo fluxos complexos no n8n que
+            conectam seus formulários, planilhas e agentes de IA em uma única
+            máquina.
+          </p>
+          <ul class="text-text-secondary text-xs space-y-2 flex flex-col items-center md:items-start">
+            <li class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em"
+                viewBox="0 0 24 24" data-icon="lucide:check">
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M20 6L9 17l-5-5"></path>
+              </svg>
+              Entrada de dados sem erros
+            </li>
+            <li class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em"
+                viewBox="0 0 24 24" data-icon="lucide:check">
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M20 6L9 17l-5-5"></path>
+              </svg>
+              Relatórios automatizados
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORKFLOW / PROCESS -->
+    <section id="process" class="py-24 border-y border-border bg-surface">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row gap-16">
+          <div class="md:w-1/3 md:sticky md:top-32 h-fit mb-12 md:mb-0 text-center md:text-left">
+            <h2 class="text-3xl md:text-4xl font-semibold tracking-tight mb-6">
+              Como Construo Seu Sistema
+            </h2>
+            <p class="text-text-secondary mb-8">
+              Uma abordagem transparente focada em engenharia. Sem promessas
+              vazias, apenas lógica.
+            </p>
+            <button
+              class="px-5 py-2.5 rounded-lg bg-text-primary text-bg-primary font-medium text-sm hover:bg-text-secondary transition-colors mx-auto md:mx-0 block md:inline-block"
+              onclick="window.location.href = '#contact'">
+              Iniciar Projeto
+            </button>
+          </div>
+
+          <div class="md:w-2/3 relative">
+            <div class="space-y-32 md:space-y-64">
+              <!-- Step 1 -->
+              <div
+                class="sticky top-[80px] md:top-32 z-[1] flex flex-col md:flex-row gap-6 process-card p-6 md:p-8 rounded-2xl text-center md:text-left">
+                <div class="flex flex-col items-center">
+                  <div
+                    class="w-8 h-8 rounded-full bg-brand-primary flex items-center justify-center text-white font-bold text-sm shrink-0">
+                    1
+                  </div>
+                </div>
+                <div>
+                  <h3 class="text-xl md:text-2xl font-medium text-text-primary mb-3">
+                    Auditoria e Design Lógico
+                  </h3>
+                  <p class="text-text-secondary text-sm md:text-base leading-relaxed">
+                    Mapeamos seus processos manuais atuais. Eu desenho o fluxo
+                    de conversa e a lógica de dados antes de escrever uma única
+                    linha de código.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Step 2 -->
+              <div
+                class="sticky top-[100px] md:top-40 z-[2] flex flex-col md:flex-row gap-6 process-card p-6 md:p-8 rounded-2xl text-center md:text-left">
+                <div class="flex flex-col items-center">
+                  <div
+                    class="w-8 h-8 rounded-full bg-brand-primary flex items-center justify-center text-white font-bold text-sm shrink-0">
+                    2
+                  </div>
+                </div>
+                <div>
+                  <h3 class="text-xl md:text-2xl font-medium text-text-primary mb-3">
+                    Desenvolvimento e Integração
+                  </h3>
+                  <p class="text-text-secondary text-sm md:text-base leading-relaxed">
+                    Conectamos Vapi/Twilio com seu CRM via n8n. Configuro os
+                    prompts da IA para refletir a voz da sua marca e seus
+                    objetivos.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Step 3 -->
+              <div
+                class="sticky top-[120px] md:top-48 z-[3] flex flex-col md:flex-row gap-6 process-card p-6 md:p-8 rounded-2xl text-center md:text-left">
+                <div class="flex flex-col items-center">
+                  <div
+                    class="w-8 h-8 rounded-full bg-brand-primary flex items-center justify-center text-white font-bold text-sm shrink-0">
+                    3
+                  </div>
+                </div>
+                <div>
+                  <h3 class="text-xl md:text-2xl font-medium text-text-primary mb-3">
+                    Testes com Dados Reais
+                  </h3>
+                  <p class="text-text-secondary text-sm md:text-base leading-relaxed">
+                    Testes rigorosos para garantir que a IA lide com objeções,
+                    sotaques e casos inesperados. Refinamos a latência e
+                    qualidade.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Step 4 -->
+              <div
+                class="sticky top-[140px] md:top-56 z-[4] flex flex-col md:flex-row gap-6 process-card p-6 md:p-8 rounded-2xl text-center md:text-left">
+                <div class="flex flex-col items-center">
+                  <div
+                    class="w-8 h-8 rounded-full bg-brand-primary flex items-center justify-center text-white font-bold text-sm shrink-0">
+                    4
+                  </div>
+                </div>
+                <div>
+                  <h3 class="text-xl md:text-2xl font-medium text-text-primary mb-3">
+                    Implementação e Entrega
+                  </h3>
+                  <p class="text-text-secondary text-sm md:text-base leading-relaxed">
+                    O sistema entra no ar. Entrego documentação e um dashboard
+                    para você monitorar chamadas e leads sem depender de mim.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- USE CASES -->
+    <section id="use-cases" class="py-24 px-6 max-w-7xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-center mb-16 text-text-primary">
+        Aplicações do <span
+          class="bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">Mundo Real</span>
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Use Case 1 -->
+        <div class="glass-card p-8 rounded-xl flex flex-col justify-between text-center md:text-left">
+          <div>
+            <div class="flex items-center justify-center md:justify-start gap-3 mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em"
+                viewBox="0 0 24 24" data-icon="lucide:building">
+                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                  <path
+                    d="M12 10h.01M12 14h.01M12 6h.01M16 10h.01M16 14h.01M16 6h.01M8 10h.01M8 14h.01M8 6h.01M9 22v-3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3">
+                  </path>
+                  <rect width="16" height="20" x="4" y="2" rx="2"></rect>
+                </g>
+              </svg>
+              <span class="text-sm font-semibold tracking-wide text-text-secondary">IMOBILIÁRIO</span>
+            </div>
+            <h3 class="text-2xl font-medium mb-4">O Atendedor Ultra-Rápido</h3>
+            <p class="text-text-secondary text-sm mb-6">
+              <strong>Problema:</strong> Leads esfriam se não houver contato em 5
+              minutos. Corretores nem sempre estão disponíveis.<br /><br />
+              <strong>Solução:</strong> Um agente de IA que liga instantaneamente
+              ao receber um formulário, qualifica o interessado e agenda a
+              visita.
+            </p>
+          </div>
+          <div class="bg-surface p-4 rounded-lg border border-border w-fit">
+            <div class="flex items-center gap-3 text-xs text-text-secondary font-mono text-left">
+              <span class="text-green-400">IA:</span> "Olá, vi seu interesse no
+              imóvel do centro. Você pretende se mudar nos próximos 30 dias?"
+            </div>
+          </div>
+        </div>
+
+        <!-- Use Case 2 -->
+        <div class="glass-card p-8 rounded-xl flex flex-col justify-between text-center md:text-left">
+          <div>
+            <div class="flex items-center justify-center md:justify-start gap-3 mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em"
+                viewBox="0 0 24 24" data-icon="lucide:shopping-bag">
+                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                  <path d="M16 10a4 4 0 0 1-8 0M3.103 6.034h17.794"></path>
+                  <path
+                    d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z">
+                  </path>
+                </g>
+              </svg>
+              <span class="text-sm font-semibold tracking-wide text-text-secondary">E-COMMERCE E SUPORTE</span>
+            </div>
+            <h3 class="text-2xl font-medium mb-4">
+              Status de Pedido e Recuperação
+            </h3>
+            <p class="text-text-secondary text-sm mb-6">
+              <strong>Problema:</strong> Equipes de suporte sobrecarregadas com
+              tickets de "Onde está meu pedido?".<br /><br />
+              <strong>Solução:</strong> Um bot de WhatsApp e Voz conectado ao
+              Shopify. Ele responde status na hora e recupera carrinhos
+              abandonados com descontos.
+            </p>
+          </div>
+          <div class="bg-surface p-4 rounded-lg border border-border">
+            <div
+              class="flex items-center justify-center md:justify-start gap-3 text-xs text-text-secondary font-mono text-left">
+              <span class="text-green-400">IA:</span> "Seu pacote #492 saiu para
+              entrega hoje. Gostaria de adicionar alguma instrução para o
+              entregador?"
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="bg-gradient-to-b from-bg-primary to-surface border-border border-t pt-24 pb-24" id="about">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row items-center gap-12">
+          <div class="w-full md:w-1/3">
+            <div class="relative aspect-square rounded-2xl overflow-hidden border border-border group h-full">
+              <!-- Image with Grayscale Hover -->
+              <img src="images/Especialista.webp" alt="Leonardo Guimarães" width="400" height="400" loading="lazy"
+                class="w-full h-full object-contain grayscale-0 md:grayscale md:group-hover:grayscale-0 transition-all duration-700" />
+            </div>
+          </div>
+          <div class="w-full md:w-2/3 space-y-6 text-center md:text-left">
+            <h2 class="text-3xl font-semibold tracking-tight text-text-primary">
+              Eu sou <span
+                class="bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">Leonardo
+                Guimarães.</span>
+            </h2>
+            <h3 class="text-xl text-text-secondary font-medium">
+              Eu construo sistemas reais, não apenas demos.
+            </h3>
+            <p class="text-text-secondary leading-relaxed">
+              O mercado de IA está cheio de ruído. Muitos vendem cursos ou
+              mostram demos chamativos que quebram em produção. Eu opero de
+              forma diferente.
+            </p>
+            <p class="text-text-secondary leading-relaxed">
+              Eu sou um desenvolvedor focado em Automação e Implementação de IA.
+              Minha base em engenharia de software permite criar infraestruturas
+              que escalam com seu negócio e entregam a economia de tempo
+              prometida.
+            </p>
+            <div class="pt-4 flex justify-center md:justify-start gap-4">
+              <a href="https://www.linkedin.com/in/leonardo-guimar%C3%A3es-webdesign" target="_blank"
+                class="text-text-secondary hover:text-text-primary"><svg xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24"
+                  data-icon="lucide:linkedin">
+                  <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2a2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6M2 9h4v12H2z">
+                    </path>
+                    <circle cx="4" cy="4" r="2"></circle>
+                  </g>
+                </svg></a>
+              <a href="#" class="text-text-secondary hover:text-text-primary"><svg xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24"
+                  data-icon="lucide:instagram">
+                  <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                  </g>
+                </svg></a>
+              <a href="#" class="text-text-secondary hover:text-text-primary"><svg xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="lucide:github">
+                  <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                    <path
+                      d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5c.08-1.25-.27-2.48-1-3.5c.28-1.15.28-2.35 0-3.5c0 0-1 0-3 1.5c-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5c-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4">
+                    </path>
+                    <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                  </g>
+                </svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="contact" class="py-32 px-6 text-center relative overflow-hidden">
+      <div class="absolute inset-0 bg-brand-primary/10 blur-3xl rounded-full -z-10 transform scale-50"></div>
+
+      <div class="max-w-2xl mx-auto space-y-8">
+        <h2 class="text-4xl md:text-5xl font-semibold tracking-tight text-text-primary">
+          Pronto para <span
+            class="bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">automatizar</span>
+          suas tarefas?
+        </h2>
+        <p class="text-lg text-text-secondary">
+          Se o acompanhamento manual e as chamadas perdidas estão freando seu
+          crescimento, nós vamos resolver isso. Vamos construir seu sistema.
+        </p>
+        <div class="flex justify-center pt-4">
+          <button class="shiny-cta">
+            <span>Agendar Minha Chamada de Estratégia</span>
+          </button>
+        </div>
+        <p class="text-xs text-text-secondary mt-8">
+          Sem compromisso. Uma conversa de 15 minutos para diagnóstico.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-border py-12 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="text-text-secondary text-sm md:text-left text-center">
+          © 2026 Leonardo Guimarães. Todos os direitos reservados.
+        </div>
+        <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8 list-none md:pr-[100px] min-[1460px]:pr-0">
+          <a href="#" class="text-text-secondary hover:text-text-primary text-sm transition-colors">Privacidade</a>
+          <a href="#" class="text-text-secondary hover:text-text-primary text-sm transition-colors">Termos</a>
+          <a href="mailto:contato@nextautomatik.com"
+            class="text-text-secondary hover:text-text-primary text-sm transition-colors">
+            contato@nextautomatik.com
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BOTÃO VOLTAR AO TOPO -->
+  <a href="#" class="back-to-top" id="btn-topo" title="Voltar ao topo">
+    <span class="icon">
+      <svg aria-hidden="true" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z">
+        </path>
+      </svg>
+    </span>
+    <span class="text">DE VOLTA AO TOPO</span>
+  </a>
+
+</body>
+
+</html>

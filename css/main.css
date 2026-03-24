@@ -1,0 +1,509 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: "Inter", sans-serif;
+}
+
+/* THEME TOKENS - LIGHT MODE */
+:root[data-theme="light"] {
+  --color-brand-primary: #8B5CF6; /* Reset back to purple globally, but CTA uses specific */
+  --color-brand-secondary: #0F0714;
+  --color-text-primary: #160C1C;
+  --color-text-secondary: rgba(22, 12, 28, 0.72);
+  --color-bg-primary: #FBFBFF;
+  --color-bg-secondary: #F3F0FF;
+  --color-surface: #FFFFFF;
+  --color-border: rgba(22, 12, 28, 0.12);
+  --color-action-hover: #191222;
+  --color-focus-ring: rgba(15, 7, 20, 0.35);
+  --color-shadow: rgba(22, 12, 28, 0.12);
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(15, 7, 20, 0.1);
+  /* Custom CTA Variables for Light Mode */
+  --cta-bg: #0F0714;
+  --cta-accent: #8B5CF6;
+}
+
+/* THEME TOKENS - DARK MODE */
+:root[data-theme="dark"] {
+  --color-brand-primary: #8B5CF6;
+  --color-brand-secondary: #7C3AED;
+  --color-text-primary: #F8F8FF;
+  --color-text-secondary: rgba(248, 248, 255, 0.72);
+  --color-bg-primary: #0F0714;
+  --color-bg-secondary: #16101F;
+  --color-surface: #191222;
+  --color-border: rgba(248, 248, 255, 0.12);
+  --color-action-hover: #A020F0;
+  --color-focus-ring: rgba(139, 92, 246, 0.35);
+  --color-shadow: rgba(0, 0, 0, 0.4);
+  --glass-bg: rgba(25, 18, 34, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  /* Custom CTA Variables for Dark Mode */
+  --cta-bg: var(--color-bg-primary);
+  --cta-accent: var(--color-brand-primary);
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
+/* Shiny CTA Button CSS */
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@property --gradient-angle-offset {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@property --gradient-percent {
+  syntax: "<percentage>";
+  initial-value: 20%;
+  inherits: false;
+}
+
+@property --gradient-shine {
+  syntax: "<color>";
+  initial-value: #8484ff;
+  inherits: false;
+}
+
+.shiny-cta {
+  --gradient-angle: 0deg;
+  --gradient-angle-offset: 0deg;
+  --gradient-percent: 20%;
+  --gradient-shine: #8484ff;
+  --shadow-size: 2px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 9999px;
+  padding: 0.875rem 2rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 500;
+  color: #ffffff;
+  background:
+    linear-gradient(var(--cta-bg), var(--cta-bg)) padding-box,
+    conic-gradient(from calc(var(--gradient-angle) - var(--gradient-angle-offset)),
+      transparent 0%,
+      var(--cta-accent) 5%,
+      var(--gradient-shine) 15%,
+      var(--cta-accent) 30%,
+      transparent 40%,
+      transparent 100%) border-box;
+  border: 2px solid transparent;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  outline: none;
+  transition:
+    --gradient-angle-offset 800ms cubic-bezier(0.25, 1, 0.5, 1),
+    --gradient-percent 800ms cubic-bezier(0.25, 1, 0.5, 1),
+    --gradient-shine 800ms cubic-bezier(0.25, 1, 0.5, 1),
+    box-shadow 0.3s,
+    background-color 0.3s;
+  cursor: pointer;
+  isolation: isolate;
+  outline-offset: 4px;
+  font-family: "Inter", sans-serif;
+  z-index: 0;
+  animation: border-spin 2.5s linear infinite;
+}
+
+@keyframes border-spin {
+  to {
+    --gradient-angle: 360deg;
+  }
+}
+
+.shiny-cta:active {
+  transform: translateY(1px);
+}
+
+.shiny-cta::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  --size: calc(100% - 6px);
+  --position: 2px;
+  --space: 4px;
+  width: var(--size);
+  height: var(--size);
+  background: radial-gradient(circle at var(--position) var(--position),
+      white 0.5px,
+      transparent 0) padding-box;
+  background-size: var(--space) var(--space);
+  background-repeat: space;
+  mask-image: conic-gradient(from calc(var(--gradient-angle) + 45deg),
+      black,
+      transparent 10% 90%,
+      black);
+  border-radius: inherit;
+  opacity: 0.4;
+}
+
+.shiny-cta::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 1;
+  background: linear-gradient(-50deg, transparent, var(--cta-accent), transparent);
+  mask-image: radial-gradient(circle at bottom, transparent 40%, black);
+  opacity: 0.6;
+  animation: shimmer 4s linear infinite;
+}
+
+.secondary-cta {
+  padding: 0.875rem 2rem;
+  border-radius: 9999px;
+  border: 2px solid var(--cta-accent);
+  color: var(--color-text-primary);
+  background: transparent;
+  font-size: 1rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.secondary-cta:hover {
+  background: rgba(139, 92, 246, 0.05);
+  transform: translateY(-2px);
+}
+
+.shiny-cta span {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.shiny-cta span::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  --size: calc(100% + 1rem);
+  width: var(--size);
+  height: var(--size);
+  box-shadow: inset 0 -1ex 2rem 4px #1d4ed8;
+  opacity: 0;
+  border-radius: inherit;
+  transition: opacity 800ms cubic-bezier(0.25, 1, 0.5, 1);
+  animation: breathe 4.5s linear infinite;
+}
+
+@keyframes shimmer {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes breathe {
+
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+/* Utility */
+.glass-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Service Cards Custom */
+.service-card {
+  border: 1px solid rgba(139, 92, 246, 0.14);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.service-card:hover {
+  border-color: rgba(139, 92, 246, 0.45);
+  box-shadow: 0 12px 30px rgba(139, 92, 246, 0.16);
+  transform: translateY(-2px);
+}
+
+.service-card__icon {
+  width: 48px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  color: #8B5CF6;
+  background: rgba(139, 92, 246, 0.12);
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.service-card__icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.service-card:hover .service-card__icon {
+  background: rgba(139, 92, 246, 0.18);
+  transform: scale(1.1);
+}
+
+.process-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 -20px 40px -20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.process-card:hover {
+  border-color: var(--color-brand-primary);
+}
+
+.text-gradient {
+  background: linear-gradient(to bottom, var(--color-text-primary), var(--color-text-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.font-geist {
+  font-family: "Geist", sans-serif !important;
+}
+
+.font-roboto {
+  font-family: "Roboto", sans-serif !important;
+}
+
+.font-montserrat {
+  font-family: "Montserrat", sans-serif !important;
+}
+
+.font-poppins {
+  font-family: "Poppins", sans-serif !important;
+}
+
+.font-playfair {
+  font-family: "Playfair Display", serif !important;
+}
+
+.font-instrument-serif {
+  font-family: "Instrument Serif", serif !important;
+}
+
+.font-merriweather {
+  font-family: "Merriweather", serif !important;
+}
+
+.font-bricolage {
+  font-family: "Bricolage Grotesque", sans-serif !important;
+}
+
+.font-jakarta {
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+}
+
+.font-manrope {
+  font-family: "Manrope", sans-serif !important;
+}
+
+.font-space-grotesk {
+  font-family: "Space Grotesk", sans-serif !important;
+}
+
+.font-work-sans {
+  font-family: "Work Sans", sans-serif !important;
+}
+
+.font-pt-serif {
+  font-family: "PT Serif", serif !important;
+}
+
+.font-geist-mono {
+  font-family: "Geist Mono", monospace !important;
+}
+
+.font-space-mono {
+  font-family: "Space Mono", monospace !important;
+}
+
+.font-quicksand {
+  font-family: "Quicksand", sans-serif !important;
+}
+
+.font-nunito {
+  font-family: "Nunito", sans-serif !important;
+}
+
+.font-newsreader {
+  font-family: "Newsreader", serif !important;
+}
+
+.font-google-sans-flex {
+  font-family: "Google Sans Flex", sans-serif !important;
+}
+
+.font-oswald {
+  font-family: "Oswald", sans-serif !important;
+}
+
+.font-dm-sans {
+  font-family: "DM Sans", sans-serif !important;
+}
+
+/* BACK TO TOP BUTTON */
+.back-to-top {
+  /* Configurações de Posicionamento */
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+
+  /* Estilo Visual Base */
+  width: 60px;
+  height: 60px;
+  background-color: #8B5CF6;
+  /* Seu Roxo Primário */
+  border: 3px solid rgba(136, 136, 136, 0.55);
+  border-radius: 50%;
+  display: none;
+  /* Inicia oculto, JS mostra ao rolar */
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  box-shadow: 0 15px 25px rgba(0, 187, 97, 0.18);
+  z-index: 999;
+}
+
+.back-to-top .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.back-to-top svg {
+  width: 20px;
+  fill: #FFFFFF;
+  /* Cor do ícone branca para contraste */
+}
+
+.back-to-top .text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  color: #FFFFFF;
+  font-family: sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+/* Efeito Hover (Ao passar o mouse) */
+@media (min-width: 768px) {
+  .back-to-top:hover {
+    width: 180px;
+    border-radius: 50px;
+  }
+
+  .back-to-top:hover .icon {
+    transform: translate(-50%, -250%);
+    opacity: 0;
+  }
+
+  .back-to-top:hover .text {
+    opacity: 1;
+  }
+}
+
+/* Ajustes Mobile */
+@media (max-width: 767px) {
+  .back-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .back-to-top .text {
+    display: none;
+    /* Esconde o texto no mobile para evitar sobreposição */
+  }
+}
+
+/* THEME TOGGLE ICON VISIBILITY */
+[data-theme="dark"] .sun {
+  display: none !important;
+}
+
+[data-theme="dark"] .moon {
+  display: block !important;
+}
+
+[data-theme="light"] .sun {
+  display: block !important;
+}
+
+[data-theme="light"] .moon {
+  display: none !important;
+}
+
+/* Transitions for all elements during theme switch */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
