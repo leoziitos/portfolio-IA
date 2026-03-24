@@ -19,8 +19,8 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: / # Ou a pasta que você quiser na Hostinger
-          local-dir: ./ # Envia tudo da raiz do repo
+          server-dir: /
+          local-dir: ./ 
           exclude: |
             **/.git*
             **/.git*/**
@@ -30,3 +30,4 @@ jobs:
             **/tailwind.config.js
             **/docs/**
             **/README.md
+            **/scripts/**
