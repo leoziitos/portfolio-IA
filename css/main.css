@@ -24,6 +24,9 @@
   /* Custom CTA Variables for Light Mode */
   --cta-bg: #0F0714;
   --cta-accent: #8B5CF6;
+  /* Process Button */
+  --color-process-btn-bg: #0F0714;
+  --color-process-btn-text: #F8F8FF;
 }
 
 /* THEME TOKENS - DARK MODE */
@@ -44,6 +47,9 @@
   /* Custom CTA Variables for Dark Mode */
   --cta-bg: var(--color-bg-primary);
   --cta-accent: var(--color-brand-primary);
+  /* Process Button */
+  --color-process-btn-bg: #8B5CF6;
+  --color-process-btn-text: #0F0714;
 }
 
 body {
@@ -506,4 +512,13 @@ body {
 /* Transitions for all elements during theme switch */
 * {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.process-btn {
+  background-color: var(--color-process-btn-bg) !important;
+  color: var(--color-process-btn-text) !important;
+}
+
+.process-btn:hover {
+  opacity: 0.9;
 }
